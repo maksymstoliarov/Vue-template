@@ -47,12 +47,12 @@ export default {
     },
     methods: {
         async login() {
-            let resp = await this.$store.dispatch("login", { user: this.user, password: this.password } )
+            let resp = await this.$store.dispatch("login", { login: this.user, password: this.password } )
             if ( resp.status != 200 ) {
                 this.$notify({
                     group: "alerts",
                     title: resp.status,
-                    text: resp.msg,
+                    text: resp.message,
                     type: 'error',
                 })
                 return

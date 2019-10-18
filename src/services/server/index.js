@@ -62,14 +62,17 @@ class Server {
             let response = await Axios(packet) 
             return response.data
         } catch(error) {
-            return { status: error.response.status, msg: error.response.data }
+            if (error.response) {
+                return { status: (error.response.status) ? error.response.status : 0, message: error.response.data }
+            }
+            return { status: 0, message: "Undifined error" }
         }
     }
 
     headers() {
         return { 
             'Content-Type': 'application/json',
-            'X-App-Token': this.token, 
+            'Authorization': 'Bearer ' + this.token, 
         }
     }
 }

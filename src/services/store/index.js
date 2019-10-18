@@ -78,7 +78,7 @@ export default new Vuex.Store({
             commit('SetUser', {})
 
         },
-        auth({ commit }, { token, user }) {
+        auth({ commit }, {token, user}) {
             commit('SetServerToken', token)
             commit('SetUser', user)
             commit('SetAuthenticated', true)
